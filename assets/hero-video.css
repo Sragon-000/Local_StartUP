@@ -1,0 +1,14 @@
+/* The film is fixed to the viewport, behind every section of the landing page. */
+.site-video-background{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:#000}
+.site-video-background::before{content:'';position:absolute;inset:0;background:url('/Local_StartUP/assets/hero-art.png') center/auto 135% no-repeat;transition:opacity .7s}
+.site-video-background video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.35);opacity:0;transition:opacity .8s ease;pointer-events:none}
+.site-video-background video.is-visible{opacity:1}
+.site-video-background::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.86),rgba(0,0,0,.55) 32%,rgba(0,0,0,.22) 60%,rgba(0,0,0,.35)),linear-gradient(0deg,rgba(0,0,0,.35),transparent 55%)}
+.site-video-ready .site-video-background::before{opacity:0}
+.hero-grid{min-height:538px}
+.hero-video-toolbar{position:fixed;left:24px;bottom:18px;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:5px 6px 5px 13px;border:1px solid #cbb5e245;border-radius:99px;color:#d7c5e6;background:#100c17dc;backdrop-filter:blur(10px)}
+.hero-video-label{font-size:7px;letter-spacing:1px;line-height:1.7;pointer-events:none}
+#hero-video-pause{min-height:34px;padding:7px 11px;border:1px solid #cbb5e25e;border-radius:99px;background:#15101fd1;color:#e6d9ee;font-size:9px;line-height:1.5;white-space:nowrap;cursor:pointer}
+#hero-video-pause:hover{background:#32223f}
+@media(max-width:600px){.hero-grid{min-height:0}.site-video-background video{transform:scale(1.08)}.site-video-background::after{background:rgba(0,0,0,.65)}.hero-video-toolbar{left:14px;bottom:92px;padding:4px}.hero-video-label{display:none}#hero-video-pause{min-height:40px;font-size:9px}}
+@media(prefers-reduced-motion:reduce){.site-video-background::before,.site-video-background video{transition:none}}

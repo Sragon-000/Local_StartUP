@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>신청하기 · 빛결</title>
+  <link rel="stylesheet" href="/Local_StartUP/assets/styles.css"><link rel="stylesheet" href="/Local_StartUP/assets/form-theme.css"><script type="module" src="/Local_StartUP/assets/apply.js"></script>
+<link rel="stylesheet" href="/Local_StartUP/assets/aurora-theme.css"><script type="module" src="/Local_StartUP/assets/chatbot.js"></script></head>
+<body>
+  <header class="header"><a class="brand" href="/Local_StartUP/" aria-label="빛결 홈"><img class="brand-image" src="/Local_StartUP/assets/bitgyeol-wordmark.png" alt="빛결" width="88" height="45"><span class="brand-caption">ART &amp; IMAGINATION<br>DAEJEON</span></a><nav aria-label="주 메뉴"><a href="/Local_StartUP/">프로젝트 소개</a></nav></header>
+  <main class="apply-layout">
+    <section class="intro">
+      <p class="eyebrow"><span class="line"></span> A NEW BEGINNING</p>
+      <h1>새로운 시작을,<br>가장 먼저<br> <span>만나보세요.</span></h1>
+      <p class="intro-copy">미디어아트 프로그램에 관심을 남겨주세요.<br>남겨주신 관심은 프로그램을 준비하는 데 활용됩니다.</p>
+      <div class="steps" aria-label="신청 과정"><div><span>01</span> 정보 입력</div><div><span>02</span> 관심 신청</div><div><span>03</span> 운영 준비</div></div>
+      <div class="apply-art"><img src="/Local_StartUP/assets/hero-art.png" alt="투명한 꽃과 빛의 실로 표현한 미디어아트 콘셉트" width="1024" height="1536"><div><span class="eyebrow">YOUR IMAGINATION, IN LIGHT</span><p>작은 관심이 새로운 시작으로.</p></div></div>
+    </section>
+    <section class="form-card" aria-labelledby="form-title">
+      <div id="form-section">
+        <p class="eyebrow">JOIN THE LIST</p><h2 id="form-title">관심 신청하기</h2><p class="muted">연락받을 정보를 남겨주세요. <span class="required-note">* 필수 항목</span></p>
+        <form id="application-form">
+          <div class="field"><label for="name">이름 <span>*</span></label><input id="name" name="name" autocomplete="name" placeholder="이름을 입력해주세요" required maxlength="80" aria-describedby="name-error"><p class="field-error" id="name-error"></p></div>
+          <div class="profile-grid">
+            <div class="field"><label for="age">나이 <span>*</span></label><input id="age" name="age" type="number" inputmode="numeric" min="1" max="120" step="1" placeholder="예: 25" required aria-describedby="age-error"><p class="field-error" id="age-error"></p></div>
+            <div class="field"><label for="gender">성별 <span>*</span></label><select id="gender" name="gender" required aria-describedby="gender-error"><option value="" disabled selected>선택해주세요</option><option value="male">남성</option><option value="female">여성</option></select><p class="field-error" id="gender-error"></p></div>
+          </div>
+          <fieldset class="experience-group"><legend>미디어콘텐츠 경험 여부</legend><label for="mediaExperience"><input id="mediaExperience" name="mediaExperience" type="checkbox" aria-describedby="experience-hint mediaExperience-error"><span>미디어콘텐츠 경험이 있습니다.</span></label><p id="experience-hint">경험이 있다면 체크해주세요.</p><p class="field-error" id="mediaExperience-error"></p></fieldset>
+          <div class="field"><label for="email">이메일 <span>*</span></label><input id="email" name="email" type="email" autocomplete="email" placeholder="hello@example.com" required maxlength="254" aria-describedby="email-error"><p class="field-error" id="email-error"></p></div>
+          <div class="field"><label for="phone">전화번호 <span>*</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000" required maxlength="40" aria-describedby="phone-error"><p class="field-error" id="phone-error"></p></div>
+          <div class="consent"><label><input id="consent" name="consent" type="checkbox" required aria-describedby="consent-error"><span><strong>[필수]</strong> 신청 확인 및 안내를 위한 개인정보 수집·이용에 동의합니다.</span></label><p class="field-error" id="consent-error"></p></div>
+          <p id="form-feedback" class="feedback" role="alert"></p>
+          <button id="submit-button" class="button primary" type="submit">신청하기 <span aria-hidden="true">↗</span></button>
+          <p class="form-footnote">관심 신청은 실제 프로그램 참여 확정을 의미하지 않습니다.</p>
+        </form>
+      </div>
+      <div id="success-section" class="success" hidden tabindex="-1">
+        <span class="success-mark" aria-hidden="true">✓</span><p class="eyebrow">YOU’RE ON THE LIST</p><h2>신청이 완료되었어요.</h2><p>관심을 남겨주셔서 감사합니다.<br>보내주신 관심을 바탕으로 프로그램을 준비하겠습니다.</p><div class="receipt"><span>신청 번호</span><code id="receipt-id"></code></div><button id="another-application" class="button secondary" type="button">새 신청 작성하기</button>
+      </div>
+      <noscript>신청하려면 브라우저에서 JavaScript를 켜주세요.</noscript>
+    </section>
+  </main>
+  <footer class="footer"><span>빛결. Something good starts here.</span><span>관심에서 시작되는 새로운 가능성</span></footer>
+</body></html>
