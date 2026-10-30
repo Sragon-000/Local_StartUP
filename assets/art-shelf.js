@@ -84,6 +84,24 @@ function initializeGallery(root) {
   });
 
   function relativeIndex(v) { return modulo(v - position + copies / 2, copies) - copies / 2; }
+  // WebKit can paint a 3D face outside its zero-size button without hit-testing
+  // that face. Resolve projected faces as a fallback for pointer interactions.
+  function panelAt(x, y) {
+    return panels.filter(panel => {
+      if (panel.button.style.visibility === 'hidden') return false;
+      const face = Math.abs(relativeIndex(panel.v)) < .5 ? panel.front : panel.side;
+      const rect = face.getBoundingClientRect();
+      return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+    }).sort((a, b) => Math.abs(relativeIndex(a.v)) - Math.abs(relativeIndex(b.v)))[0];
+  }
+  viewport.addEventListener('click', event => {
+    if (suppressClick || event.target.closest('.art-panel, .art-arrow')) return;
+    const panel = panelAt(event.clientX, event.clientY);
+    if (!panel) return;
+    const relative = relativeIndex(panel.v);
+    if (Math.abs(relative) < .45) openDetail();
+    else { target = Math.round(position + relative); requestFrame(); }
+  });
   function requestFrame() { if (!frame && visible && !document.hidden && !dialog.open) frame = requestAnimationFrame(render); }
   function measure() {
     // Resolve clamp()/vw via a probe; the authored custom property is not a pixel value.
@@ -186,7 +204,9 @@ function initializeGallery(root) {
     }
     const rect = viewport.getBoundingClientRect();
     const x = event.clientX - rect.left, y = event.clientY - rect.top;
-    const onCover = Boolean(event.target.closest('.art-cover')) && Math.abs(target - position) < .2;
+    const hoveredPanel = event.target.closest('.art-arrow') ? null : panelAt(event.clientX, event.clientY);
+    hovering = hoveredPanel?.v ?? -1;
+    const onCover = hoveredPanel && Math.abs(relativeIndex(hoveredPanel.v)) < .45 && Math.abs(target - position) < .2;
     viewport.classList.toggle('on-cover', onCover);
     cursor.style.left = `${x}px`; cursor.style.top = `${y}px`;
     aimX = onCover && !reduced.matches ? -(y - rect.height * .51) / height * 7 : 0;
