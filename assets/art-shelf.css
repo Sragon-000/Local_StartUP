@@ -41,3 +41,5 @@ body dialog.art-detail{--ink:#eee7f5;--muted:#b5a8c0;color-scheme:dark;color:var
 .art-detail-facts{display:flex;flex-wrap:wrap;gap:18px 30px;padding:22px 0;margin:25px 0 0;border-top:1px solid #ffffff24;border-bottom:1px solid #ffffff24}
 .art-detail-facts dt{font-size:10px;color:#ac9cba;letter-spacing:1px;margin-bottom:10px}.art-detail-facts dd{font-size:13px;color:#eee4f5;margin:0}
 @media(max-width:700px){.art-detail.has-media .art-detail-grid{padding:25px 22px 40px}.art-detail.has-media .art-detail-copy h3{font-size:38px}.art-detail-facts{gap:18px 24px;padding:20px 0;margin-top:22px}.art-detail-copy p.art-detail-description{font-size:14px;line-height:1.9}}
+
+.art-gallery-bar{min-width:0}.art-slot-nav{min-width:0;max-width:70%;overflow-x:auto;scrollbar-width:thin}.art-slot-nav button{flex-shrink:0}

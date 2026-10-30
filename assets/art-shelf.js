@@ -1,7 +1,12 @@
-import { artworks } from './art-shelf-data.js';
+import { artworks as fallbackArtworks } from './art-shelf-data.js';
 
+let artworks = fallbackArtworks;
 const root = document.querySelector('#art-gallery');
-if (root && artworks.length) initializeGallery(root);
+if(root){
+ try { const response=await fetch('https://bitgyeol-api-sragon.imset0512.chatgpt.site/api/artworks',{cache:'no-store',signal:AbortSignal.timeout(5000)});if(!response.ok)throw new Error('gallery');const result=await response.json();if(!Array.isArray(result.data))throw new Error('gallery');artworks=result.data; } catch {}
+ if(artworks.length) initializeGallery(root);
+ else root.querySelector('.art-fallback').textContent='새로운 작품 공개를 준비하고 있어요.';
+}
 
 function initializeGallery(root) {
   const section = root.closest('section');
